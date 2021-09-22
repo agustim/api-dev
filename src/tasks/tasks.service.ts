@@ -30,10 +30,10 @@ export const find = async (id: number): Promise<Task> => {
   return tasks[id]
 }
 
-export const findByStatus = async (status: string ): Promise<Task[]> => {
+export const findByStatus = async (status: string): Promise<Task[]> => {
   let tasksByStatus: Task[] = []
-  for (const task of Object.values(tasks)){
-    if (task.status == status){
+  for (const task of Object.values(tasks)) {
+    if (task.status == status) {
       tasksByStatus.push(task)
     }
   }

@@ -16,7 +16,6 @@ tasksRouter.get('/', async (req: Request, res: Response) => {
   }
 })
 
-
 // GET tasks/:id
 
 tasksRouter.get('/:id', async (req: Request, res: Response) => {
@@ -39,16 +38,15 @@ tasksRouter.get('/:id', async (req: Request, res: Response) => {
 // GET tasks/by-status/:status
 
 tasksRouter.get('/by-status/:status', async (req: Request, res: Response) => {
-    const status: string = req.params.status
-    try {
-      const tasks: Task[] = await TasksService.findByStatus(status)
-  
-      res.status(200).send(tasks)
-    } catch (e: any) {
-      res.status(500).send(e.message)
-    }
-  })
-  
+  const status: string = req.params.status
+  try {
+    const tasks: Task[] = await TasksService.findByStatus(status)
+
+    res.status(200).send(tasks)
+  } catch (e: any) {
+    res.status(500).send(e.message)
+  }
+})
 
 // POST tasks
 

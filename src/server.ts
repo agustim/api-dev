@@ -13,6 +13,6 @@ app.get('/test', (req, res) => {
   res.send({ test: 'test' })
 })
 
-app.use("/api/tasks", tasksRouter);
+app.use('/api/tasks', tasksRouter)
 
 export default app
