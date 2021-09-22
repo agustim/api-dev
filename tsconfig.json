@@ -1,11 +1,29 @@
 {
-    "compilerOptions": {
-      "rootDir": ".",
-      "outDir": ".",  // if out path for a file is same as its src path, nothing will be emitted
-      "resolveJsonModule": true,
-      "composite": true  // required on the dependency project for references to work
+  "compilerOptions": {
+    "target": "es2019",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "lib": ["es2019"],
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "resolveJsonModule": true,
+    "alwaysStrict": true,
+    "removeComments": true,
+    "noImplicitReturns": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@tests/*": ["./tests/*"]
     },
-    "files": [         // by whitelisting the files to include, TS won't automatically
-      "package.json"   // include all source below root, which is the default.
-    ]
-  }
+    "rootDirs": ["./src", "./tests"]
+  },
+  "include": ["./src/**/*.ts", "./tests/**/*.ts"],
+  "exclude": ["./node_modules/*", "dist"]
+}
