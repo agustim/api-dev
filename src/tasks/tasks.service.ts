@@ -20,6 +20,12 @@ let tasks: Tasks = {
     campaign: 'captacio',
     status: 'apte',
   },
+  4: {
+    id: 4,
+    lead: 'user4@example.com',
+    campaign: 'captacio',
+    status: 'apte',
+  },
 }
 
 export const findAll = async (): Promise<Task[]> => {
@@ -47,6 +53,21 @@ export const create = async (newTask: Task): Promise<Task> => {
     ...newTask,
     id,
   }
+
+  return tasks[id]
+}
+
+export const updateStatus = async (
+  id: number,
+  status: string,
+): Promise<Task | null> => {
+  const task = await find(id)
+
+  if (!task) {
+    return null
+  }
+
+  tasks[id] = { ...task, status }
 
   return tasks[id]
 }

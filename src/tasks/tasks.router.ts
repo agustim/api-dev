@@ -86,6 +86,27 @@ tasksRouter.put('/:id', async (req: Request, res: Response) => {
   }
 })
 
+// PUT tasks/:id/status/:status
+
+tasksRouter.put('/:id/status/:status', async (req: Request, res: Response) => {
+  const id: number = parseInt(req.params.id, 10)
+  const status: string = req.params.status
+
+  try {
+    const existingTask: Task = await TasksService.find(id)
+
+    if (existingTask) {
+      const updatedTask = await TasksService.updateStatus(id, status)
+      res.status(200).json(updatedTask)
+      return
+    }
+    res.status(500).send('This task is not exist.')
+    return
+  } catch (e: any) {
+    res.status(500).send(e.message)
+  }
+})
+
 // DELETE tasks/:id
 
 tasksRouter.delete('/:id', async (req: Request, res: Response) => {
