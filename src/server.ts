@@ -1,11 +1,7 @@
 import express from 'express'
-import cors from 'cors'
-import helmet from 'helmet'
+import { tasksRouter } from './tasks/tasks.router'
 
 const app = express()
-
-app.use(helmet())
-app.use(cors())
 
 app.use(express.json())
 
@@ -16,5 +12,7 @@ app.get('/', (req, res) => {
 app.get('/test', (req, res) => {
   res.send({ test: 'test' })
 })
+
+app.use("/api/tasks", tasksRouter);
 
 export default app
