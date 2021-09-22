@@ -4,21 +4,21 @@ import { Tasks } from './tasks.interface'
 let tasks: Tasks = {
   1: {
     id: 1,
-    lead: '1',
+    lead: 'user1@example.com',
     campaign: 'captacio',
-    status: 'apta',
+    status: 'apte',
   },
   2: {
     id: 2,
-    lead: '2',
+    lead: 'user2@example.com',
     campaign: 'captacio',
     status: '1r-mail',
   },
   3: {
     id: 3,
-    lead: '3',
+    lead: 'user3@example.com',
     campaign: 'captacio',
-    status: 'apta',
+    status: 'apte',
   },
 }
 
