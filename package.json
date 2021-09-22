@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "tsc -w & nodemon dist/index.js",
+    "dev": "tsc --build src -w & nodemon dist/index.js",
     "test": "echo 'Need defined test environment.'"
   },
   "devDependencies": {

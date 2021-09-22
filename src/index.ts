@@ -1,4 +1,5 @@
 import express from 'express'
+import { name, version } from '../package.json'
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -9,7 +10,7 @@ app.get("/", (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`Start api-dev v.1.0.0 in port ${port}`)
+    console.log(`Start ${name} v.${version} in port ${port}`)
     return
 })
 

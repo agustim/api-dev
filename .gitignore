@@ -40,3 +40,6 @@ dist/**/*
 
 # ignore yarn.lock
 yarn.lock
+
+# tsconfig.ts build info
+tsconfig.tsbuildinfo
