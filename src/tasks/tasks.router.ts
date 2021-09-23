@@ -48,6 +48,54 @@ tasksRouter.get('/by-status/:status', async (req: Request, res: Response) => {
   }
 })
 
+// GET tasks/by-status-days/:status/:daysBefore
+
+tasksRouter.get(
+  '/by-status-days/:status/:daysBefore',
+  async (req: Request, res: Response) => {
+    const status: string = req.params.status
+    const days: number = parseInt(req.params.daysBefore, 10)
+
+    let dateCalculate = new Date()
+    dateCalculate.setDate(dateCalculate.getDate() - days)
+
+    try {
+      const tasks: Task[] = await TasksService.findByStatusDate(
+        status,
+        dateCalculate,
+      )
+
+      res.status(200).send(tasks)
+    } catch (e: any) {
+      res.status(500).send(e.message)
+    }
+  },
+)
+
+// GET tasks/by-status-minutes/:status/:minutesBefore
+
+tasksRouter.get(
+  '/by-status-minutes/:status/:minutesBefore',
+  async (req: Request, res: Response) => {
+    const status: string = req.params.status
+    const minutes: number = parseInt(req.params.minutesBefore, 10)
+
+    let dateCalculate = new Date()
+    dateCalculate.setMinutes(dateCalculate.getMinutes() - minutes)
+
+    try {
+      const tasks: Task[] = await TasksService.findByStatusDate(
+        status,
+        dateCalculate,
+      )
+
+      res.status(200).send(tasks)
+    } catch (e: any) {
+      res.status(500).send(e.message)
+    }
+  },
+)
+
 // POST tasks
 
 tasksRouter.post('/', async (req: Request, res: Response) => {

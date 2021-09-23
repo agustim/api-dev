@@ -6,8 +6,8 @@ let tasks: Tasks = {
     id: 1,
     lead: 'user1@example.com',
     campaign: 'captacio',
-    created: new Date(),
-    updated: new Date(),
+    created: new Date(new Date().setDate(new Date().getDate() - 5)),
+    updated: new Date(new Date().setDate(new Date().getDate() - 5)),
     status: 'apte',
   },
   2: {
@@ -48,6 +48,20 @@ export const findByStatus = async (status: string): Promise<Task[]> => {
   let tasksByStatus: Task[] = []
   for (const task of Object.values(tasks)) {
     if (task.status == status) {
+      tasksByStatus.push(task)
+    }
+  }
+  return tasksByStatus
+}
+
+export const findByStatusDate = async (
+  status: string,
+  date: Date,
+): Promise<Task[]> => {
+  let tasksByStatus: Task[] = []
+
+  for (const task of Object.values(tasks)) {
+    if (task.status == status && task.updated <= date) {
       tasksByStatus.push(task)
     }
   }
