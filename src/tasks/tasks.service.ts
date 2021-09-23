@@ -6,24 +6,32 @@ let tasks: Tasks = {
     id: 1,
     lead: 'user1@example.com',
     campaign: 'captacio',
+    created: new Date(),
+    updated: new Date(),
     status: 'apte',
   },
   2: {
     id: 2,
     lead: 'user2@example.com',
     campaign: 'captacio',
+    created: new Date(),
+    updated: new Date(),
     status: '1r-mail',
   },
   3: {
     id: 3,
     lead: 'user3@example.com',
     campaign: 'captacio',
+    created: new Date(),
+    updated: new Date(),
     status: 'apte',
   },
   4: {
     id: 4,
     lead: 'user4@example.com',
     campaign: 'captacio',
+    created: new Date(),
+    updated: new Date(),
     status: 'apte',
   },
 }
@@ -49,9 +57,12 @@ export const findByStatus = async (status: string): Promise<Task[]> => {
 export const create = async (newTask: Task): Promise<Task> => {
   const id = new Date().valueOf()
 
+  const ara = new Date()
   tasks[id] = {
     ...newTask,
     id,
+    created: ara,
+    updated: ara
   }
 
   return tasks[id]
@@ -67,7 +78,8 @@ export const updateStatus = async (
     return null
   }
 
-  tasks[id] = { ...task, status }
+  const updated = new Date()
+  tasks[id] = { ...task, status, updated }
 
   return tasks[id]
 }
@@ -82,7 +94,8 @@ export const update = async (
     return null
   }
 
-  tasks[id] = { ...taskUpdate, id }
+  const updated = new Date()
+  tasks[id] = { ...taskUpdate, id, updated }
 
   return tasks[id]
 }
