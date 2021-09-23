@@ -9,8 +9,8 @@ app.get('/', (req, res) => {
   res.send({ hello: 'world' })
 })
 
-app.get('/test', (req, res) => {
-  res.send({ test: 'test' })
+app.get('/ping', (req, res) => {
+  res.send({ data: 'pong' })
 })
 
 app.use('/api/tasks', tasksRouter)

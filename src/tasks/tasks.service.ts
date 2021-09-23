@@ -62,7 +62,7 @@ export const create = async (newTask: Task): Promise<Task> => {
     ...newTask,
     id,
     created: ara,
-    updated: ara
+    updated: ara,
   }
 
   return tasks[id]
