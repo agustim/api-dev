@@ -1,5 +1,6 @@
 import express from 'express'
 import { tasksRouter } from './tasks/tasks.router'
+//import proxy from './mailing'
 
 const app = express()
 
@@ -14,5 +15,9 @@ app.get('/ping', (req, res) => {
 })
 
 app.use('/api/tasks', tasksRouter)
+
+// mailing proxy
+
+// app.use('/maildev', proxy)
 
 export default app
