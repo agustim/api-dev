@@ -72,6 +72,7 @@ tasksRouter.get(
   },
 )
 
+// Only test
 // GET tasks/by-status-minutes/:status/:minutesBefore
 
 tasksRouter.get(
@@ -154,6 +155,29 @@ tasksRouter.put('/:id/status/:status', async (req: Request, res: Response) => {
     res.status(500).send(e.message)
   }
 })
+
+// Only test!!!
+// PUT tasks/:id/sub-days/:day
+
+tasksRouter.put('/:id/sub-days/:days', async (req: Request, res: Response) => {
+  const id: number = parseInt(req.params.id, 10)
+  const days: number = parseInt(req.params.days, 10)
+
+  try {
+    const existingTask: Task = await TasksService.find(id)
+
+    if (existingTask) {
+      const updatedTask = await TasksService.updateDays(id, days)
+      res.status(200).json(updatedTask)
+      return
+    }
+    res.status(500).send('This task is not exist.')
+    return
+  } catch (e: any) {
+    res.status(500).send(e.message)
+  }
+})
+
 
 // DELETE tasks/:id
 

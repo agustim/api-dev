@@ -79,6 +79,22 @@ export const update = async (
   return tasks[id]
 }
 
+export const updateDays = async (
+  id: number,
+  days: number,
+): Promise<Task | null> => {
+  const task = await find(id)
+
+  if (!task) {
+    return null
+  }
+
+  const updated = new Date(new Date().setDate(new Date().getDate() - days))
+  tasks[id] = { ...task, updated }
+
+  return tasks[id]
+}
+
 export const remove = async (id: number): Promise<null | void> => {
   const task = await find(id)
 

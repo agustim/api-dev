@@ -1,9 +1,10 @@
 import express from 'express'
 import { tasksRouter } from './tasks/tasks.router'
-//import proxy from './mailing'
+import Helmet from "helmet"
 
 const app = express()
 
+app.use(Helmet())
 app.use(express.json())
 
 app.get('/', (req, res) => {
@@ -15,9 +16,5 @@ app.get('/ping', (req, res) => {
 })
 
 app.use('/api/tasks', tasksRouter)
-
-// mailing proxy
-
-// app.use('/maildev', proxy)
 
 export default app
