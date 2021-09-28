@@ -7,7 +7,7 @@ const MailDev = require('maildev')
 
 // Define a route for the base path
 const maildev = new MailDev({
-  basePathname: '/maildev'
+  basePathname: '/maildev',
 })
 
 // Maildev now running on localhost:1080/maildev
@@ -17,7 +17,7 @@ maildev.listen(function (err: any) {
 })
 
 // proxy all maildev requests to the maildev app
-const proxy = createProxyMiddleware( {
+const proxy = createProxyMiddleware({
   target: `http://localhost:1080`,
   ws: true,
 })
