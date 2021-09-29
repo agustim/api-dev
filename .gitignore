@@ -43,3 +43,5 @@ yarn.lock
 
 # tsconfig.ts build info
 tsconfig.tsbuildinfo
+
+logs/**
