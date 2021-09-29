@@ -52,6 +52,24 @@ export const findByCampaignStatus = async (
   return tasksByCampaignStatus
 }
 
+export const findByEmailCampaign = async (
+  email: string,
+  id: number | null,
+): Promise<Task[]> => {
+  let tasksByEmailCampaign: Task[] = []
+
+  for (const task of Object.values(tasks)) {
+    if (
+      task.lead == email &&
+      ((task.campaign && task.campaign.id && task.campaign.id == id) ||
+        id == null)
+    ) {
+      tasksByEmailCampaign.push(task)
+    }
+  }
+  return tasksByEmailCampaign
+}
+
 export const create = async (newTask: Task): Promise<Task> => {
   const id = new Date().valueOf()
 

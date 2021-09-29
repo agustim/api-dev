@@ -13,14 +13,14 @@ let tasks: Tasks = {
   2: {
     id: 2,
     lead: 'user2@example.com',
-    campaign: campaigns[0],
+    campaign: campaigns[1],
     created: new Date(),
     updated: new Date(),
     status: '1r-mail',
   },
   3: {
     id: 3,
-    lead: 'user3@example.com',
+    lead: 'user1@example.com',
     campaign: campaigns[2],
     created: new Date(),
     updated: new Date(),
@@ -28,7 +28,7 @@ let tasks: Tasks = {
   },
   4: {
     id: 4,
-    lead: 'user4@example.com',
+    lead: 'user2@example.com',
     campaign: campaigns[2],
     created: new Date(),
     updated: new Date(),

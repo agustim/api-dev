@@ -119,7 +119,7 @@ tasksRouter.get(
 // GET tasks/by-campaign-status/:campaign/:status
 
 tasksRouter.get(
-  '/by-campaign/:campaign',
+  '/by-campaign-status/:campaign/:status',
   async (req: Request, res: Response) => {
     const campaign: number = parseInt(req.params.campaign, 10)
     const status: string = req.params.status
@@ -128,6 +128,36 @@ tasksRouter.get(
       const tasks: Task[] = await TasksService.findByCampaignStatus(
         campaign,
         status,
+      )
+
+      res.status(200).send(tasks)
+    } catch (e: any) {
+      res.status(500).send(e.message)
+    }
+  },
+)
+
+// GET tasks/by-email/:email
+tasksRouter.get('/by-email/:email', async (req: Request, res: Response) => {
+  const email: string = req.params.email
+  try {
+    const tasks: Task[] = await TasksService.findByEmailCampaign(email, null)
+
+    res.status(200).send(tasks)
+  } catch (e: any) {
+    res.status(500).send(e.message)
+  }
+})
+// GET tasks/by-email-campaign/:email/:campaign
+tasksRouter.get(
+  '/by-email-campaign/:email/:campaign',
+  async (req: Request, res: Response) => {
+    const email: string = req.params.email
+    const campaign: number = parseInt(req.params.campaign, 10)
+    try {
+      const tasks: Task[] = await TasksService.findByEmailCampaign(
+        email,
+        campaign,
       )
 
       res.status(200).send(tasks)
