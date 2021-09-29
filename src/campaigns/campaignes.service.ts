@@ -36,6 +36,7 @@ export const create = async (newCampign: Campaign): Promise<Campaign> => {
   const ara = new Date()
   campaigns[id] = {
     ...newCampign,
+    id: id,
     created: ara,
     updated: ara,
   }

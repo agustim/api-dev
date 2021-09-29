@@ -97,6 +97,46 @@ tasksRouter.get(
   },
 )
 
+// GET tasks/by-campaign/:campaign
+
+tasksRouter.get(
+  '/by-campaign/:campaign',
+  async (req: Request, res: Response) => {
+    const campaign: number = parseInt(req.params.campaign, 10)
+    try {
+      const tasks: Task[] = await TasksService.findByCampaignStatus(
+        campaign,
+        '',
+      )
+
+      res.status(200).send(tasks)
+    } catch (e: any) {
+      res.status(500).send(e.message)
+    }
+  },
+)
+
+// GET tasks/by-campaign-status/:campaign/:status
+
+tasksRouter.get(
+  '/by-campaign/:campaign',
+  async (req: Request, res: Response) => {
+    const campaign: number = parseInt(req.params.campaign, 10)
+    const status: string = req.params.status
+
+    try {
+      const tasks: Task[] = await TasksService.findByCampaignStatus(
+        campaign,
+        status,
+      )
+
+      res.status(200).send(tasks)
+    } catch (e: any) {
+      res.status(500).send(e.message)
+    }
+  },
+)
+
 // POST tasks
 
 tasksRouter.post('/', async (req: Request, res: Response) => {
@@ -177,7 +217,6 @@ tasksRouter.put('/:id/sub-days/:days', async (req: Request, res: Response) => {
     res.status(500).send(e.message)
   }
 })
-
 
 // DELETE tasks/:id
 

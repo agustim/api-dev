@@ -5,7 +5,7 @@ let tasks: Tasks = {
   1: {
     id: 1,
     lead: 'user1@example.com',
-    campaign: campaigns[0],
+    campaign: campaigns[1],
     created: new Date(new Date().setDate(new Date().getDate() - 5)),
     updated: new Date(new Date().setDate(new Date().getDate() - 5)),
     status: 'apte',
@@ -21,7 +21,7 @@ let tasks: Tasks = {
   3: {
     id: 3,
     lead: 'user3@example.com',
-    campaign: campaigns[1],
+    campaign: campaigns[2],
     created: new Date(),
     updated: new Date(),
     status: 'apte',
@@ -29,7 +29,7 @@ let tasks: Tasks = {
   4: {
     id: 4,
     lead: 'user4@example.com',
-    campaign: campaigns[1],
+    campaign: campaigns[2],
     created: new Date(),
     updated: new Date(),
     status: 'apte',

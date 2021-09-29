@@ -1,6 +1,7 @@
 import express from 'express'
 import { tasksRouter } from './tasks/tasks.router'
-import Helmet from "helmet"
+import { campaignsRouter } from './campaigns/campaigns.router'
+import Helmet from 'helmet'
 
 const app = express()
 
@@ -16,5 +17,6 @@ app.get('/ping', (req, res) => {
 })
 
 app.use('/api/tasks', tasksRouter)
+app.use('/api/campaigns', campaignsRouter)
 
 export default app
