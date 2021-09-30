@@ -52,6 +52,28 @@ export const findByCampaignStatus = async (
   return tasksByCampaignStatus
 }
 
+export const findByCampaignStatusDate = async (
+  campaign: number,
+  status: string,
+  dateCalculate: Date,
+): Promise<Task[]> => {
+  let tasksByCampaignStatusDate: Task[] = []
+
+  console.log(dateCalculate)
+  for (const task of Object.values(tasks)) {
+    if (
+      (status == '' || task.status == status) &&
+      task.campaign &&
+      task.campaign.id &&
+      task.campaign.id == campaign &&
+      task.updated <= dateCalculate
+    ) {
+      tasksByCampaignStatusDate.push(task)
+    }
+  }
+  return tasksByCampaignStatusDate
+}
+
 export const findByEmailCampaign = async (
   email: string,
   id: number | null,

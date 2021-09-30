@@ -137,6 +137,32 @@ tasksRouter.get(
   },
 )
 
+// GET tasks/by-campaign-status-days/:campaign/:status/:days
+
+tasksRouter.get(
+  '/by-campaign-status-days/:campaign/:status/:daysBefore',
+  async (req: Request, res: Response) => {
+    const campaign: number = parseInt(req.params.campaign, 10)
+    const status: string = req.params.status
+    const days: number = parseInt(req.params.daysBefore, 10)
+
+    let dateCalculate = new Date()
+    dateCalculate.setDate(dateCalculate.getDate() - days)
+
+    try {
+      const tasks: Task[] = await TasksService.findByCampaignStatusDate(
+        campaign,
+        status,
+        dateCalculate,
+      )
+
+      res.status(200).send(tasks)
+    } catch (e: any) {
+      res.status(500).send(e.message)
+    }
+  },
+)
+
 // GET tasks/by-email/:email
 tasksRouter.get('/by-email/:email', async (req: Request, res: Response) => {
   const email: string = req.params.email
