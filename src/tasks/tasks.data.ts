@@ -20,15 +20,15 @@ let tasks: Tasks = {
   },
   3: {
     id: 3,
-    lead: 'user1@example.com',
-    campaign: campaigns[2],
+    lead: 'user3@example.com',
+    campaign: campaigns[1],
     created: new Date(),
     updated: new Date(),
     status: 'apte',
   },
   4: {
     id: 4,
-    lead: 'user2@example.com',
+    lead: 'user4@example.com',
     campaign: campaigns[2],
     created: new Date(),
     updated: new Date(),

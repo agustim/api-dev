@@ -3,6 +3,7 @@ export interface Campaign {
   name: string
   status: string
   tags: string
+  gold: string
   created: Date
   updated: Date
 }
